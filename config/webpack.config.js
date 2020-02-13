@@ -1,4 +1,3 @@
-'use strict';
 
 const fs = require('fs');
 const path = require('path');
@@ -88,7 +87,11 @@ module.exports = function(webpackEnv) {
       },
       {
         loader: require.resolve('css-loader'),
-        options: cssOptions,
+        options: {
+          importLoaders: 1,
+          modules: true,
+//          localIdentName: '[local]__[name]__[hash:base64:5]'
+        },
       },
       {
         // Options for PostCSS as we reference these options twice
