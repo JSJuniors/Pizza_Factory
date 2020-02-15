@@ -1,11 +1,19 @@
 import React, {Component} from 'react';
-import PizzaBuilder from '../src/containers/PizzaBuilder/PizzaBuilder'
+import Dough from '../src/components/Pizza/Dough/Dough';
+import GeneralPage from '../src/components/GeneralPage/GeneralPage'
+import { Route, Switch } from 'react-router-dom';
+import Layout from './components/Layout/Layout'
 class App extends Component {
   state = {  }
   render() { 
     return ( 
       <div>
-        <PizzaBuilder />
+        <Layout>
+                <Switch>
+                    <Route path='/' exact component={GeneralPage} />
+                    <Route path='/dough'  component={Dough} />                  
+                </Switch>
+            </Layout>
       </div>
      );
   }
