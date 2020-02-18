@@ -3,11 +3,17 @@ import Pizza from '../../components/Pizza/Pizza';
 
 
 class PizzaBuilder extends Component {
-    state = {  }
+    state = { 
+        ingredients: {
+            pepperoni: 1,
+            papper: 1,
+            cheese: 1
+        }
+     }
     render() { 
         return ( 
             <div>
-                <Pizza />
+                <Pizza ingredients={this.state.ingredients} />
             </div>
          );
     }
