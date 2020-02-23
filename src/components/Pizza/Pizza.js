@@ -6,13 +6,8 @@ import PizzaIngredients from "./PizzaIngredients/PizzaIngredients";
 const pizza = props => {
     let transformedIngs = Object.keys(props.ingredients)
     .map(igKey => {
-        return [...Array(props.ingredients[igKey])].map((_, i) => {
-           return <PizzaIngredients key={igKey + i} type={igKey} />
-        });
+           return <PizzaIngredients key={igKey} type={igKey} />
     })
-    .reduce((arr, el) => {
-        return arr.concat(el)
-    }, [])
     if (transformedIngs.length === 0){
         transformedIngs = <p>Please start your choose</p>
     }

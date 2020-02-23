@@ -4,9 +4,9 @@ import classes from './NavigationItems';
 
 const NavigationItems = (props) => {
     return (
-        <div>
+        <div className={classes.topnav}>
         <h1>PIZZA FACTORY</h1>
-            <ul className={classes.NavigationItems}>
+            <ul>
                 <NavigationItem link="/" active>Create</NavigationItem>
                 <NavigationItem link="/">About</NavigationItem>
                 <NavigationItem link="/">Gallery</NavigationItem>

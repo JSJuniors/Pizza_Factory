@@ -1,50 +1,41 @@
-body{
-    background: url("../../assets//pizza.jpg");
-    background-size: 100%;
-    background-position:top;
-    background: cover;
-    
+
+.container{
+width: 100%;
+height: 100%;
+background-image: url('../../assets/pizza.jpg');
+background-size: 100%;
+background-repeat: no-repeat;
+background-attachment: fixed;
 }
 
-h1 {
-    font-size: 36px;
-    display: inline;
-    font-size: 2em;
-    font-weight: bold;
-    padding: 20px;
+.main{
+	display: flex;
+	width: 100%;
+	height: 92%;
+}
+ section{
+	width: 50%;
+	height: 100%;
+}
+.make_pizza h1{
+	color: white;
+	font-size: 120px;
+	font-family: 'Lacquer', sans-serif;
+}
+.button{
+	margin: 50px;
+	width: 300px;
+	height: 300px;
+	background-color: red;
+	border: none;
+	border-radius: 50%;
+	font-size: 50px;
+	font-family: 'Krona One', sans-serif;
+}
+.button:active{
+	background-color: black
+}
+.button:focus{
+	outline: none;
 }
 
-.round {
-    width: 100px;
-    top: 200px;
-  }
-  .roundButton {
-    width: 100%;
-    height:0;
-    padding-bottom: 100%;
-    border-radius: 50%;
-    border:10px solid white;
-    overflow:hidden;
-          
-    background:black; 
-    box-shadow: 0 0 3px gray;
-  }
-  .roundButton:hover {
-    background: rgb(102, 75, 75);
-  }
-  .round a {
-    display:block;
-    float:left;
-    width: 110px;
-    padding-top:50%;
-    padding-bottom:50%;
-    line-height:1em;
-    margin-top:-0.5em;
-          
-    text-align:center;
-    color:#e2eaf3;
-    font-family:Verdana;
-    font-size: 10px;
-    font-weight:bold;
-    text-decoration:none;
-  }
