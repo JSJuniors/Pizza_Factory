@@ -16,8 +16,9 @@ const pizza = props => {
 
         return(
             <div className={classes.pizza}>
-            <PizzaIngredients type="crust"></PizzaIngredients>
-            {transformedIngs}
+            <PizzaIngredients type="crust">
+                {transformedIngs}
+            </PizzaIngredients>
             </div>
         )
 }

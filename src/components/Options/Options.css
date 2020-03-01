@@ -1,15 +1,8 @@
-.cat{
+
+ .options{
 display: flex; 
 justify-content: center;
 align-items: center;
 width: 100%;
-height: 40%;
-}
-
-.cat div {
-height: 60%;
-width: 80%;
-overflow:auto;
-display: flex;
-flex-wrap: nowrap;
+height: 100%;
 }
