@@ -7,7 +7,7 @@ const Options = (props) =>  (
                return (
         <Option 
         key={i} 
-        img={i} 
+        img={props.src} 
         optionSelected={props.optionSelect} />
         )
     })}

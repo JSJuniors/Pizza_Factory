@@ -14,7 +14,7 @@ const Categories = (props) => {
                            />
                            )
                         })} */}
-                        <Categorie src={props.value} />
+                        <Categorie img={props.value} />
 					</div>
 		</div>
      );

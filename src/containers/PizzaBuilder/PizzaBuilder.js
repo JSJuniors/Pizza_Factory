@@ -25,40 +25,37 @@ class PizzaBuilder extends Component {
             cheese: 1
         },
         options: {
-            a: {src: opt.a, id: "a"},
-            b: {src: opt.b, id: "b"},
-            c: {src: opt.c, id: "c"}
-    },
-        categ: [cat.a1, cat.b1, cat.c1, cat.d1],
-        activeItemId: -1,
+            a: {src: opt.a, cat: cat.a1, id: "a"},
+            b: {src: opt.b, cat: cat.a2, id: "b"},
+            c: {src: opt.c, cat: cat.a3, id: "c"}
+        },
+        activeItemId: 0,
     }
 
     selectItem = id => {
         this.setState({
-           activeItemId: id,
+           activeItemId: "b",
         });
-        alert(this.state.activeItemId)
+        alert(this.state.activeItemId);
       };
 
     
     render() { 
-        let  items  = Object.keys(this.state.options)
-        //const  activeItemId  = this.state;
-       
-        const activeItem = items.find(item => item.id === this.state.activeItemId);
-
-        items = items.map(i => i.src)
+        let  items  = Object.keys(this.state.options) // [a, b, c]
+    
+        let activeItem = items.map(item =>       
+            item.id === this.state.activeItemId ? <Categories value={item.cat} /> : <p>Choose Option</p>
+        )
 
         return ( 
-            <div >
+            <div>
                 <Options 
-                    options={items}
+                    options={items} // ???????????
                     optionSelect={this.selectItem}
+                    src={this.state.options}
                 />   
-                <Categories 
-                value={activeItem}
-                />
                 
+                {activeItem}                
                 <Pizza ingredients={this.state.ingredients} /> 
             </div>
          );
