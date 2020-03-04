@@ -12,6 +12,7 @@ class App extends Component {
   nextPageHandle = () => {
     this.setState({ redirect: true })
   }
+
   render() {
      if (this.state.redirect) {
       return <Redirect from="/" to="/pizzaBuilder" />
@@ -29,4 +30,5 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App; 
+

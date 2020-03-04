@@ -3,6 +3,7 @@ import Categorie from './Categorie/Categorie';
 import classes from './Categories.css'
 
 const Categories = (props) => {
+  if(props.isOpen){
     return ( 
 		<div className={classes.block}>
 					<div className={classes.item}>
@@ -18,6 +19,9 @@ const Categories = (props) => {
 					</div>
 		</div>
      );
+}else {
+  return (<p>Choose something</p>)
 }
+} 
  
 export default Categories;
