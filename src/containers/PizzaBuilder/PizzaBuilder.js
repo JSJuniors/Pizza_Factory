@@ -28,28 +28,34 @@ class PizzaBuilder extends Component {
             {
                 src: opt.a,
                 cat: cat.a1,
-                id: "a"
+                id: "a",
+                title: "Hi"
             },
             {
                 src: opt.b,
-                cat: cat.a2,
-                id: "b"
+                cat: cat.b1,
+                id: "b",
+                title: "Hello"
             },
             {
                 src: opt.c,
-                cat: cat.a3,
-                id: "c"
+                cat: cat.c1,
+                id: "c",
+                title: "Hha"
             }
         ],
         activeItemId: 0,
-        isOpen: false
+        isOpen: {
+            display: false,
+            id: null
+        }
     }
 
 
 
     selectProduct = id => {
         let activeId = this.state.options.filter(i => i.id === id)
-        this.setState({ isOpen: true, activeItemId: { ...activeId } })
+        this.setState({ isOpen: { display : !this.state.isOpen.display, id } })
         console.log(this.state.activeItemId);
     }
 
@@ -65,17 +71,18 @@ class PizzaBuilder extends Component {
                                 optionSelect={() => this.selectProduct(i.id)}
                                 key={i.id}
                             />
+                            {i.id === this.state.isOpen.id && this.state.isOpen.display ?
+                                (<Categories
+                                title={i.title}
+                                    value={i.cat} />) : <p>error</p>}
                         </div>
                     )
                     )
                 }
                 <div>
-                    <Categories
-                        isOpen={this.state.isOpen}
-                        value={this.state.activeItemId.cat} />
-                    <Pizza ingredients={this.state.ingredients} />
-                </div>
 
+                </div>
+                <Pizza ingredients={this.state.ingredients} />
             </div>
         )
     }
