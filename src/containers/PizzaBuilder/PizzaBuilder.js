@@ -18,63 +18,68 @@ let cat = {
 }
 
 class PizzaBuilder extends Component {
-    state = { 
+    state = {
         ingredients: {
             pepperoni: 1,
             papper: 1,
             cheese: 1
         },
-        options: {
-            a: {
-                src: opt.a, 
-                cat: cat.a1, 
+        options: [
+            {
+                src: opt.a,
+                cat: cat.a1,
                 id: "a"
             },
-            b: {
-                src: opt.b, 
-                cat: cat.a2, 
-                id: "b"},
-            c: {
-                src: opt.c, 
-                cat: cat.a3, 
-                id: "c"}
-        },
+            {
+                src: opt.b,
+                cat: cat.a2,
+                id: "b"
+            },
+            {
+                src: opt.c,
+                cat: cat.a3,
+                id: "c"
+            }
+        ],
         activeItemId: 0,
         isOpen: false
     }
 
- /*    selectItem = id => {
-        this.setState({
-           activeItemId: id
-        });
-        alert(this.state.activeItemId);
-      }; */
 
 
-      handleClick = () => {
-        this.setState({isOpen: true})
-        };
-    
-    render() { 
-        
-        let  items = Object.keys(this.state.options) // [a, b, c]
-       let i =  items.map(i => i.src)
-        /*  let activeItem = items.map(item =>       
-            item.id === this.state.activeItemId ? <Categories value={item.cat} /> : <p>Choose Option</p>
-        )  */
+    selectProduct = id => {
+        let activeId = this.state.options.filter(i => i.id === id)
+        this.setState({ isOpen: true, activeItemId: { ...activeId } })
+        console.log(this.state.activeItemId);
+    }
 
-        return ( 
+
+    render() {
+        return (
             <div>
-                <Options 
-                    options={items} 
-                    optionSelect={this.handleClick}
-                    src={i}
-                    /> 
-                <Categories isOpen={this.state.isOpen} />       
-                <Pizza ingredients={this.state.ingredients} /> 
+                {
+                    this.state.options.map(i => (
+                        <div>
+                            <Options
+                                src={i.src}
+                                optionSelect={() => this.selectProduct(i.id)}
+                                key={i.id}
+                            />
+                        </div>
+                    )
+                    )
+                }
+                <div>
+                    <Categories
+                        isOpen={this.state.isOpen}
+                        value={this.state.activeItemId.cat} />
+                    <Pizza ingredients={this.state.ingredients} />
+                </div>
+
             </div>
-         );
+        )
     }
 }
- 
 export default PizzaBuilder;
+
+
