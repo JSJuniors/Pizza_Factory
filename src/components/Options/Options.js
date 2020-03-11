@@ -1,15 +1,13 @@
 import React from 'react';
-import Option from './Option/Option'
-import classes from './Options.css'
-const Options = (props) =>  ( 
-       /*  <div className={classes.options}>
-            {props.options.map(i => { // a, b, c */
+import Option from './Option/Option';
+
+const Options = (props) => ( 
+    
         <Option 
         img={props.src} 
         optionSelected={props.optionSelect} />
     )
 
- 
 export default Options;
   
     	

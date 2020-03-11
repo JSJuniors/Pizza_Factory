@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Pizza from '../../components/Pizza/Pizza';
 import Options from '../../components/Options/Options'
 import Categories from '../../components/Options/Categories/Categories'
+import Droppable from '../../components/DnD/Droppable/Droppable';
+import Draggable from '../../components/DnD/Draggable/Draggable'
+import PizzaIngredients from '../../components/Pizza/PizzaIngredients/PizzaIngredients';
 
 let opt = {
     a: 'https://image.flaticon.com/icons/svg/2592/2592552.svg',
@@ -29,38 +32,53 @@ class PizzaBuilder extends Component {
                 src: opt.a,
                 cat: cat.a1,
                 id: "a",
-                title: "Hi"
+                type: "cheese"
             },
             {
                 src: opt.b,
                 cat: cat.b1,
                 id: "b",
-                title: "Hello"
+                type: "pepper"
             },
             {
                 src: opt.c,
                 cat: cat.c1,
                 id: "c",
-                title: "Hha"
+                type: "pepperoni"
             }
         ],
         activeItemId: 0,
         isOpen: {
             display: false,
-            id: null
+            id: null,
+            type: null
         }
     }
 
-
-
     selectProduct = id => {
-        let activeId = this.state.options.filter(i => i.id === id)
-        this.setState({ isOpen: { display : !this.state.isOpen.display, id } })
+        this.setState({ isOpen: { display: !this.state.isOpen.display, id } })
         console.log(this.state.activeItemId);
     }
 
+    drop = (e) => {
+        e.preventDefault();
+    }
+    allowDrop = (e) => {
+        e.preventDefault();
+    }
+    drag = (e) => {
+        e.stopPropagation();
+        console.log(this.state.type);  
+    }
+    noAllowDrop = (e) => {
+        e.stopPropagation()
+    }
+
+
+
 
     render() {
+
         return (
             <div>
                 {
@@ -72,17 +90,35 @@ class PizzaBuilder extends Component {
                                 key={i.id}
                             />
                             {i.id === this.state.isOpen.id && this.state.isOpen.display ?
-                                (<Categories
-                                title={i.title}
-                                    value={i.cat} />) : <p>error</p>}
+                                (<Draggable
+                                    id={i.id}
+                                    drag={this.drag}
+                                    noAllowDrop={this.noAllowDrop}
+                                >
+                                    <Categories
+                                        value={i.cat} />
+                                </Draggable>) : <p>Choose option</p>}
                         </div>
                     )
                     )
                 }
                 <div>
-
                 </div>
-                <Pizza ingredients={this.state.ingredients} />
+                <Droppable
+                    drop={this.drop}
+                    allowDrop={this.allowDrop}
+                    id={this.state.options.map(i => i.id)}>
+                    <Pizza ingredients={this.state.ingredients}>
+                        {this.state.options.map(i => (
+                            <PizzaIngredients
+                                type={i.type}
+                                key={i.id} />
+                        )
+                        )
+                        }
+                    </Pizza>
+                </Droppable>
+
             </div>
         )
     }

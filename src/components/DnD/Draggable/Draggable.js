@@ -1,20 +1,16 @@
 import React from 'react';
 
-export default class Draggable extends React.Component{
+const Draggable = props => {
 
-    drag= (e) => {
-        e.stopPropagation();      
-    }
-    render(){
-        return(
-            <div 
-            id={this.props.id} 
-            draggable={true} 
-            onDragStart={this.drag} 
-            onDragOver={this.noAllowDrop} 
-            style={this.props.style}>
-                {this.props.children}
-            </div>
-        )
-    }
+    return (
+        <div
+            id={props.id}
+            draggable={true}
+            onDragStart={props.drag}
+            onDragOver={props.noAllowDrop}>
+            {props.children}
+        </div>
+    )
 }
+
+export default Draggable

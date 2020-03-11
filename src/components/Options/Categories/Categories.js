@@ -6,20 +6,11 @@ const Categories = (props) => {
     return ( 
 		<div className={classes.block}>
 					<div className={classes.item}>
-                       {/*  {props.cat.map(i => {
-                           return (
-                           <Categorie 
-                           key={i}
-                           img={i}
-                           />
-                           )
-                        })} */}
                         <Categorie img={props.value} />
-                        <p>{props.title}</p>
 					</div>
 		</div>
      );
 }
 
  
-export default Categories;
+export default Categories; 
